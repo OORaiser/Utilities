@@ -2,12 +2,12 @@
 if (!Function.prototype.bind) {
     Function.prototype.bind = function(obj) {
         var slice = Array.prototype.slice,
-        	args = slice.call(argments, 1),
+        	args = slice.call(arguments, 1),
             nop = function () {},
             bound = (function(self) {
                 return function () {
                 	self.apply(this instanceof nop ? this : (obj || {}),
-                		args.concat(slice.call(argments)))
+                		args.concat(slice.call(arguments)))
                 }
             })(this);
             
