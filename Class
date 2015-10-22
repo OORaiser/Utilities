@@ -27,5 +27,4 @@ function Class () {
 	}
 	
 	return _class;
-	
 }
