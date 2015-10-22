@@ -1,0 +1,19 @@
+//bind
+if (!Function.prototype.bind) {
+    Function.prototype.bind = function(obj) {
+        var slice = Array.prototype.slice,
+        	args = slice.call(argments, 1),
+            nop = function () {},
+            bound = (function(self) {
+                return function () {
+                	self.apply(this instanceof nop ? this : (obj || {}),
+                		args.concat(slice.call(argments)))
+                }
+            })(this);
+            
+        nop.prototype = this.prototype;
+        bound.prototype = new nop();
+        
+        return bound;
+    }
+}
