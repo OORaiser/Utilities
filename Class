@@ -19,7 +19,7 @@ function Class () {
 		if (included) included(_class)
 	}
 	
-	_class.fn.proxy = function (func) {
+	_class.proxy = _class.fn.proxy = function (func) {
 		var self = this;
 		return function () {
 			return func.apply(self, argments)
