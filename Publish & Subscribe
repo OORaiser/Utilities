@@ -1,6 +1,6 @@
 var PubSub = {
     subscribe: function (ev, callback) {
-        if (Object.prototype.toString.call(callback).substr(8,8) === 'Function') {
+        if (Object.prototype.toString.call(callback).slice(8, -1) === 'Function') {
             if (this._callback || (this._callback = {})) {
                 if (this._callback[ev] || (this._callback[ev] = [])) {
                     this._callback[ev].push(callback)
