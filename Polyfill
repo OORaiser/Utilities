@@ -6,7 +6,7 @@ if (!Function.prototype.bind) {
             nop = function () {},
             bound = (function(self) {
                 return function () {
-                	self.apply(this instanceof nop ? this : (obj || {}),
+                	return self.apply(this instanceof nop ? this : (obj || {}),
                 		args.concat(slice.call(arguments)))
                 }
             })(this);
