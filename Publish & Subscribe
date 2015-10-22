@@ -2,15 +2,15 @@ var PubSub = {
     subscribe: function (ev, callback) {
         if (Object.prototype.toString.call(callback)) {
         }
-        if (this._callback || this._callback = {}) {
-            if (this._callback[ev] || this._callback[ev] = []) {
+        if (this._callback || (this._callback = {})) {
+            if (this._callback[ev] || (this._callback[ev] = [])) {
                 this._callback[ev].push(callback)
             }
         }
         return this;
     },
     publish: function () {
-        var args = Array.prototype.slice.call(argments, 0),
+        var args = Array.prototype.slice.call(arguments, 0),
             ev = args.shift(),
             i = 0,
             l = args.length,
