@@ -1,10 +1,10 @@
 var PubSub = {
     subscribe: function (ev, callback) {
-        if (Object.prototype.toString.call(callback)) {
-        }
-        if (this._callback || (this._callback = {})) {
-            if (this._callback[ev] || (this._callback[ev] = [])) {
-                this._callback[ev].push(callback)
+        if (Object.prototype.toString.call(callback).substr(8,8) === 'Function') {
+            if (this._callback || (this._callback = {})) {
+                if (this._callback[ev] || (this._callback[ev] = [])) {
+                    this._callback[ev].push(callback)
+                }
             }
         }
         return this;
@@ -13,11 +13,11 @@ var PubSub = {
         var args = Array.prototype.slice.call(arguments, 0),
             ev = args.shift(),
             i = 0,
-            l = args.length,
+            l,
             list;
             
-        if (!this._callback || !(list = this._callback[ev])) return;
-        for (; i < l; i++) {
+        if (!this._callback || !(list = this._callback[ev])) return this;
+        for (l = list.length; i < l; i++) {
             list[i].apply(this, args)
         }
         return this;
