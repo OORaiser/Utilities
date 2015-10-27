@@ -1,0 +1,9 @@
+function addEvent(ele, type, func, boolean) {
+	if (window.addEventListener) {
+		ele.addEventListener(type, func, boolean ? boolean :　false)
+	} else if (window.attachEvent) {
+		ele.attachEvent('on' + type, func)
+	} else {
+		ele.[on + 'type'] = func
+	}
+}
